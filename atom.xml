@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Hexo]]></title>
+  
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://p8ss.com/"/>
+  <updated>2016-01-27T09:57:10.550Z</updated>
+  <id>http://p8ss.com/</id>
+  
+  <author>
+    <name><![CDATA[刘金龙]]></name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[前端适配方案]]></title>
+    <link href="http://p8ss.com/2016/01/27/%E5%89%8D%E7%AB%AF%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88/"/>
+    <id>http://p8ss.com/2016/01/27/前端适配方案/</id>
+    <published>2016-01-27T09:56:09.000Z</published>
+    <updated>2016-01-27T09:57:10.550Z</updated>
+    <content type="html"><![CDATA[<p>   早在Web 2.0 时代为了兼容各种浏览器而抓狂不已，进入移动互联时代，本想webkit内核浏览器一家独大应该不用大费周章的寻找兼容方案，看来还是太年轻了。</p>
+<p>-&gt;<img src="http://www.makmong.com/wp-content/uploads/2015/12/120915_0834_1.png" alt="enter description here">&lt;-</p>
+<p>上面展示了各个厂商的不同设备的屏幕大小，由此引出我们今天的主题 – 移动端适配。</p>
+<p>通过自己做的几个移动端适配，总的来说其实各种适配方案看起来基本都是在对meta viewport做处理, 以达到最好的效果.</p>
+<h3 id="u56FA_u5B9A_u5BBD_u5EA6_uFF0Cviewport__u7F29_u653E"><a href="#u56FA_u5B9A_u5BBD_u5EA6_uFF0Cviewport__u7F29_u653E" class="headerlink" title="固定宽度，viewport 缩放"></a>固定宽度，viewport 缩放</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"width=640,target-densitydpi=devici-dpi,user-scalable=no"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>视觉稿、页面宽度、viewport width 使用统一宽度，利用浏览器自身缩放完成适配。页面样式（包括图像元素）完全按照视觉稿的尺寸，使用定值单位 （px、em）即可完成。</p>
+</blockquote>
+<p>-&gt;<img src="http://www.makmong.com/wp-content/uploads/2015/12/222.png" alt="enter description here">&lt;-<br><strong>优点：</strong></p>
+<ol>
+<li>开发简单缩放交给浏览器，完全按视觉稿切图。</li>
+<li>还原精准 绝对等比例缩放，可以精准还原视觉稿（不考虑清晰度的情况下）。</li>
+<li>测试方便在PC端即可完成大部分测试，手机端只需酌情调整一些细节（比如图标、字体混合排列时，因为字体不同造成的对齐问题）。</li>
+</ol>
+<p><strong>存在的问题：</strong></p>
+<ol>
+<li>像素丢失 对于一些分辨率较低的手机，可能设备像素还未达到指定的 viewport 宽度，此时屏幕的渲染可能就不准确了。比较常见的是边框“消失”了，不过随着手机硬件的更新，这个问题会越来越少的。</li>
+<li>缩放失效 某些安卓机不能正常的根据 meta 标签中 width 的值来缩放 viewport，需要配合initial-scale 。</li>
+<li>文本折行存在于缩放失效的机型中，某些手机为了便于文本的阅读，在文本到达 viewport 边缘（非元素容器的边缘）时即进行折行，而当 viewport 宽度被修正后，浏览器并没有正确的重绘，所以就发现文本没有占满整行。一些常用的段落性文本标签会存在该问题。<br>解决方案：</li>
+</ol>
+<blockquote>
+<p>缩放失效问题需通过 js 动态设定 initial-scale。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fixScreen = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;					</span><br><span class="line">	<span class="keyword">var</span> metaEl = doc.querySelector(<span class="string">'meta[name="viewport"]'</span>),					</span><br><span class="line">        metaCtt = metaEl ? metaEl.content :					<span class="string">''</span>,					</span><br><span class="line">        matchScale = metaCtt.match(<span class="regexp">/initial\-scale=([\d\.]+)/</span>),					</span><br><span class="line">        matchWidth = metaCtt.match(<span class="regexp">/width=([^,\s]+)/</span>);					</span><br><span class="line">					<span class="keyword">if</span></span><br><span class="line">					( metaEl &amp;&amp;</span><br><span class="line">					!matchScale &amp;&amp;</span><br><span class="line">					( matchWidth &amp;&amp; matchWidth[<span class="number">1</span>]</span><br><span class="line">					!=</span><br><span class="line">					<span class="string">'device-width'</span>)</span><br><span class="line">					)</span><br><span class="line">					&#123;					</span><br><span class="line">	<span class="keyword">var</span> width = <span class="built_in">parseInt</span>(matchWidth[<span class="number">1</span>]),					</span><br><span class="line">            iw = win.innerWidth || width,					</span><br><span class="line">            ow = win.outerWidth || iw,					</span><br><span class="line">            sw = win.screen.width || iw,					</span><br><span class="line">            saw = win.screen.availWidth || iw,					</span><br><span class="line">            ih = win.innerHeight || width,					</span><br><span class="line">            oh = win.outerHeight || ih,					</span><br><span class="line">            ish = win.screen.height || ih,					</span><br><span class="line">            sah = win.screen.availHeight || ih,					</span><br><span class="line">            w = <span class="built_in">Math</span>.min(iw,ow,sw,saw,ih,oh,ish,sah),					</span><br><span class="line">            scale = w / width;					</span><br><span class="line">					<span class="keyword">if</span></span><br><span class="line">					( ratio &lt;</span><br><span class="line">					<span class="number">1</span>)</span><br><span class="line">					&#123;					</span><br><span class="line">            metaEl.content +=</span><br><span class="line">					<span class="string">',initial-scale='</span></span><br><span class="line">					+ ratio +</span><br><span class="line">					<span class="string">',maximum-scale='</span></span><br><span class="line">					+ ratio +</span><br><span class="line">					<span class="string">', minimum-scale='</span></span><br><span class="line">					+ scale;					</span><br><span class="line">					&#125;					</span><br><span class="line">	&#125;</span><br><span class="line">					</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">`					</span><br><span class="line">&gt;文本折行问题可以通过 css 样式解决。</span><br><span class="line">`</span><span class="string">``</span>css</span><br><span class="line">section, p, div,					</span><br><span class="line">h1, h2, h3, h4, h5, h6,					</span><br><span class="line">.fix-<span class="keyword">break</span> &#123;					</span><br><span class="line">   background: tranparent url(<span class="string">'about:blank'</span>);					</span><br><span class="line">   word-<span class="keyword">break</span>: <span class="keyword">break</span>-all;					</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">`					</span><br><span class="line"></span><br><span class="line">### 利用 rem 布局</span><br><span class="line"></span><br><span class="line">`</span><span class="string">``</span>html</span><br><span class="line">&lt;meta name=“viewport” content=“width=device-width, initial-scale=<span class="number">1</span>, maximum-scale=<span class="number">1</span>″&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>简单的理解，rem就是相对于根元素的font-size来做计算。而我们的方案中使用rem单位，是能轻易的根据的font-size计算出元素的盒模型大小。页面任何需要弹性适配的元素，尺寸均换算为 rem 进行布局；当页面渲染时，根据页面有效宽度进行计算，调整 rem 的大小，动态缩放以达到适配的效果。利用该方案，还可以根据 devicePixelRatio 设定 initial-scale 来放大 viewport，使页面按照物理像素渲染，提升清晰度。<br>-&gt;<img src="http://www.makmong.com/wp-content/uploads/2015/12/1111.png" alt="enter description here">&lt;-</p>
+<p><strong>优点：</strong></p>
+<ol>
+<li>清晰度高，能达到物理像素的清晰度。</li>
+<li>能解决 DPR 引起的”1像素”问题。</li>
+<li>向后兼容较好，即便屏幕宽度增加、PPI 增加该方案依旧适用。</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>适配 js 需尽可能早进入，减少（避免）viewport 变化引起的重绘。</li>
+<li>某些Android机会丢掉 rem 小数部分。</li>
+<li>需要预编译库进行单位转换。</li>
+</ol>
+<blockquote>
+<p>动态调整 rem 的方法如下：<br>```js<br>var fixScreen = function() {<br>    var metaEl = doc.querySelector(‘meta[name=”viewport”]’),<br>        metaCtt = metaEl ? metaEl.content :                    ‘’,<br>        matchScale = metaCtt.match(/initial-scale=([\d.]+)/),<br>        matchWidth = metaCtt.match(/width=([^,\s]+)/);<br>                        if<br>                        (<br>                        !metaEl )<br>                        { // REM</p>
+</blockquote>
+<pre><code>    var docEl = doc.documentElement,            
+        maxwidth = docEl.dataset.mw || 750, // 每 dpr 最大页面宽度                    
+        dpr = isIos ? Math.min(win.devicePixelRatio, 3) : 1,                    
+        scale = 1 / dpr,                
+        tid;                    
+    docEl.removeAttribute(&apos;data-mw&apos;);                    
+    docEl.dataset.dpr = dpr;                    
+    metaEl = doc.createElement(&apos;meta&apos;);                    
+    metaEl.name = &apos;viewport&apos;;                    
+    metaEl.content =
+                &apos;initial-scale=&apos;
+                + ratio +
+                &apos;,maximum-scale=&apos;
+                + ratio +
+                &apos;, minimum-scale=&apos;
+                + scale;                    
+    docEl.firstElementChild.appendChild(metaEl);                    
+                var refreshRem =
+                function(){                    
+                var width = docEl.getBoundingClientRect().width;                    
+                if
+                (width / dpr &gt; maxwidth)
+                {                    
+            width = maxwidth * dpr;                    
+                }                    
+                var rem = width / 16;                    
+        docEl.style.fontSize = rem + &apos;px&apos;;
+};            
+//...
+    refreshRem();
+}                    
+</code></pre><p>}<br>```<br>注意，较小的背景图（比如一些 icon）的 background-size 不要使用具体 rem 数值，裁剪后会出现边缘丢失。应使用与元素等尺寸切图，设定 background-size: contain|cover 来缩放。</p>
+<p>这种方案可以参考阿里的实现方式: lib-flexible库</p>
+<p>lib-flexible库的使用方法非常的简单，只需要在Web页面的中添加对应的flexible_css.js,flexible.js文件</p>
+<p>两种方案各有所长，实际运用中还需按需选取啦：）</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>   早在Web 2.0 时代为了兼容各种浏览器而抓狂不已，进入移动互联时代，本想webkit内核浏览器一家独大应该不用大费周章的寻找兼容方案，看来还是太年轻了。</p>
+<p>-&gt;<img src="http://www.makmong.com/wp-content]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="http://p8ss.com/2016/01/27/hello-world/"/>
+    <id>http://p8ss.com/2016/01/27/hello-world/</id>
+    <published>2016-01-27T07:56:25.159Z</published>
+    <updated>2016-01-27T07:56:25.159Z</updated>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.]]>
+    </summary>
+    
+  </entry>
+  
+</feed>
