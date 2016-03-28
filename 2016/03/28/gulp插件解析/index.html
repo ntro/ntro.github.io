@@ -1,0 +1,752 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="babel现在我们将它分为两个单独的包： babel-cli和babel-core。1$ npm install --global babel-cli&amp;#10;&amp;#10;$ npm install --save-dev babel-core
+如果你想要在命令行使用Babel，你可以安装babel-cli，或者你需要在一个Node项目中使用Babel，你可以使用babel-core。
+增加插件和预设">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://p8ss.com/2016/03/28/gulp插件解析/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="babel现在我们将它分为两个单独的包： babel-cli和babel-core。1$ npm install --global babel-cli&amp;#10;&amp;#10;$ npm install --save-dev babel-core
+如果你想要在命令行使用Babel，你可以安装babel-cli，或者你需要在一个Node项目中使用Babel，你可以使用babel-core。
+增加插件和预设">
+<meta property="og:updated_time" content="2016-03-28T07:47:16.199Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="babel现在我们将它分为两个单独的包： babel-cli和babel-core。1$ npm install --global babel-cli&amp;#10;&amp;#10;$ npm install --save-dev babel-core
+如果你想要在命令行使用Babel，你可以安装babel-cli，或者你需要在一个Node项目中使用Babel，你可以使用babel-core。
+增加插件和预设">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title>  | Hexo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hexo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-28T15:47:16+08:00" content="2016-03-28">
+              2016-03-28
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h3><p>现在我们将它分为两个单独的包： babel-cli和babel-core。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --global babel-cli&#10;&#10;$ npm install --save-dev babel-core</span><br></pre></td></tr></table></figure></p>
+<p>如果你想要在命令行使用Babel，你可以安装babel-cli，或者你需要在一个Node项目中使用Babel，你可以使用babel-core。</p>
+<p><strong>增加插件和预设值</strong><br>你需要根据你需要完成的任务来单独安装相应的插件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev babel-preset-es2015</span><br></pre></td></tr></table></figure></p>
+<p>在.babelrc中配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;    &#34;presets&#34;: [&#34;es2015&#34;]&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参考: <a href="http://cnodejs.org/topic/56460e0d89b4b49902e7fbd3" target="_blank" rel="external">cnodejs.org</a>  &amp;&amp;  <a href="https://github.com/thejameskyle/babel-handbook/blob/master/translations/zh-Hans/README.md" target="_blank" rel="external">github.com</a></p>
+</blockquote>
+<h3 id="BrowserSync"><a href="#BrowserSync" class="headerlink" title="BrowserSync"></a>BrowserSync</h3><p>对于修改或简单实例的使用，命令行用法可以说是相当有帮助的。全局安装Browsersync后，你可以这样运行它：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ browser-sync <span class="built_in">start</span> &lt;options&gt;</span><br></pre></td></tr></table></figure></p>
+<p>命令行常用的API:</p>
+<blockquote>
+<p>–files    文件路径看<br>–server 运行本地服务器（使用您的CWD作为Web根）<br>–host    指定主机名使用<br>–port    指定要使用的端口</p>
+<h4 id="Browsersync_API"><a href="#Browsersync_API" class="headerlink" title="Browsersync API"></a>Browsersync API</h4><p>在 2.0.0 版本之前<br>我们允许直接引用Browsersync模块后即可使用：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 引用 browserSync 模块</span><br><span class="line">var browserSync = require("browser-sync");</span><br><span class="line"></span><br><span class="line">// 启动服务器</span><br><span class="line">browserSync(&#123;server: "./app"&#125;);</span><br><span class="line"></span><br><span class="line">// 调用reload方法 </span><br><span class="line">browserSync.reload("core.css");</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>在2.0.0+版本（推荐）<br>虽然上述方式依然支持，但现在我们推荐以下方式代替。调用 .create() 意味着你得到一个唯一的实例并允许您创建多个服务器或代理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// require &#21152;&#36733; browser-sync &#27169;&#22359;&#10;var bs = require(&#34;browser-sync&#34;).create();&#10;&#10;// .init &#21551;&#21160;&#26381;&#21153;&#22120;&#10;bs.init(&#123;&#10;    server: &#34;./app&#34;&#10;&#125;);&#10;&#10;// &#29616;&#22312;&#35831;BS&#65292;&#32780;&#19981;&#26159;&#26041;&#27861;&#10;// &#20027;Browsersync&#27169;&#22359;&#20986;&#21475;&#10;bs.reload(&#34;*.html&#34;);</span><br></pre></td></tr></table></figure></p>
+<p>常用的API:</p>
+<blockquote>
+<p>.create() 创建一个唯一的实例并允许您创建多个服务器或代理<br>.init( config, cb ) 启动一个服务器<br>.reload( arg )    导致浏览器刷新，要么注入文件，实时更新改动<br>.stream( opts )    返回一个变换流，并且可以充当一次或多个文件</p>
+</blockquote>
+<p><strong>options (选项配置</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">browserSync(&#123;</span><br><span class="line">   notify: <span class="literal">false</span>, <span class="comment">//浏览器中的通知。</span></span><br><span class="line">   port: <span class="number">9000</span>, <span class="comment">//使用（而不是一个自动检测到Browsersync）特定端口 </span></span><br><span class="line">   server: &#123;</span><br><span class="line">     baseDir: [<span class="string">'.tmp'</span>, <span class="string">'app'</span>], <span class="comment">//多个基目录</span></span><br><span class="line">     routes: &#123; <span class="comment">//值是文件夹要提供的（相对于当前的工作目录）</span></span><br><span class="line">       <span class="string">'/bower_components'</span>: <span class="string">'bower_components'</span></span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Browsersync + Gulp.js</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var gulp        = require(&#39;gulp&#39;);&#10;var browserSync = require(&#39;browser-sync&#39;).create();&#10;var sass        = require(&#39;gulp-sass&#39;);&#10;var reload      = browserSync.reload;&#10;&#10;// &#38745;&#24577;&#26381;&#21153;&#22120; + &#30417;&#21548; scss/html &#25991;&#20214;&#10;gulp.task(&#39;serve&#39;, [&#39;sass&#39;], function() &#123;&#10;&#10;    browserSync.init(&#123;&#10;        server: &#34;./app&#34;&#10;    &#125;);&#10;&#10;    gulp.watch(&#34;app/scss/*.scss&#34;, [&#39;sass&#39;]);&#10;    gulp.watch(&#34;app/*.html&#34;).on(&#39;change&#39;, reload);&#10;&#125;);&#10;&#10;// scss&#32534;&#35793;&#21518;&#30340;css&#23558;&#27880;&#20837;&#21040;&#27983;&#35272;&#22120;&#37324;&#23454;&#29616;&#26356;&#26032;&#10;gulp.task(&#39;sass&#39;, function() &#123;&#10;    return gulp.src(&#34;app/scss/*.scss&#34;)&#10;        .pipe(sass())&#10;        .pipe(gulp.dest(&#34;app/css&#34;))&#10;        .pipe(reload(&#123;stream: true&#125;));&#10;&#125;);&#10;&#10;gulp.task(&#39;default&#39;, [&#39;serve&#39;]);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参考 <a href="http://www.browsersync.cn/docs/" target="_blank" rel="external">browsersync</a></p>
+<h3 id="Ruby_SASS__26amp_3B_26amp_3B_SASS"><a href="#Ruby_SASS__26amp_3B_26amp_3B_SASS" class="headerlink" title="Ruby SASS &amp;&amp; SASS"></a>Ruby SASS &amp;&amp; SASS</h3></blockquote>
+<p>gulp-ruby-sass基于ruby和sass，编译Sass文件为 CSS文件。 特点：比gulp-sass，但是更稳定，功能更丰富。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var gulp = require(&#39;gulp&#39;);&#10;var sass = require(&#39;gulp-ruby-sass&#39;);&#10;&#10;gulp.task(&#39;default&#39;, function () &#123;&#10;    return gulp.src(&#39;src/scss/app.scss&#39;)&#10;        .pipe(sass(&#123;sourcemap: true, sourcemapPath: &#39;../scss&#39;&#125;))&#10;        .pipe(gulp.dest(&#39;dist/css&#39;));&#10;&#125;);&#10;//sourcemap&#21487;&#29992;&#65306;&#38656;&#35201;Sass&#62;=3.3.0 &#21644; sourcemapPath&#36873;&#39033;&#12290;&#10;//sourcemapPath&#65306;&#22240;&#20026;gulp-ruby-sass &#19981;&#30693;&#36947;&#20320;&#30340;CSS&#30446;&#24405; &#25110;&#32773;&#20320;&#26381;&#21153;&#23433;&#35013;&#30446;&#24405;&#65292;&#20320;&#19981;&#24471;&#19981;&#32473;&#19968;&#20123;&#39069;&#22806;&#30340;&#20449;&#24687;&#26469;&#24110;&#21161;&#27983;&#35272;&#22120;&#25214;&#21040;sourcemaps.</span><br></pre></td></tr></table></figure></p>
+<p>gulp-sass是调用node-sass,有node.js环境就够了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&#39;sass&#39;, function() &#123;&#10;    return gulp.src(src.scss)&#10;        .pipe(sass())&#10;        .pipe(gulp.dest(src.css))&#10;        .pipe(reload(&#123;stream: true&#125;));&#10;&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>通过查看依赖关系以及部分源码可以发现，gulp-ruby-sass和gulp-sass的区别就在于编译器的不同和编译过程不同。</p>
+<p>: gulp-ruby-sass是调用sass，所以需要ruby环境，需要生成临时目录和临时文件<br>: gulp-sass是调用node-sass,有node.js环境就够了，编译过程不需要临时目录和文件，直接通过buffer内容转换。<br>搞定这个问题后，就可以愉快地使用了，我又能继续学习css了。</p>
+<blockquote>
+<p>参考：<a href="https://segmentfault.com/a/1190000003112509" target="_blank" rel="external">https://segmentfault.com/a/1190000003112509</a></p>
+</blockquote>
+<p><strong>错误提示</strong><br>Syntax error: Invalid GBK character “\xE5″<br>sass文件编译时候使用ruby环境，在xp环境中没有任何问题，但是在windows7环境下无论是界面化的koala工具还是命令行模式的都会出现以下错误。</p>
+<p>找到ruby的安装目录，里面也有sass模块，如这个路径：<br>C:\Ruby\lib\ruby\gems\1.9.1\gems\sass-3.3.14\lib\sass<br>在这个文件里面engine.rb，添加一行代码（同方法1）<br>Encoding.default_external = Encoding.find(‘utf-8′)<br>放在所有的require XXXX 之后即可。</p>
+<blockquote>
+<p>参考：<a href="http://www.tuicool.com/articles/f2YVRv" target="_blank" rel="external">http://www.tuicool.com/articles/f2YVRv</a></p>
+</blockquote>
+<h3 id="Browserify"><a href="#Browserify" class="headerlink" title="Browserify"></a>Browserify</h3><blockquote>
+<p>曾经，有一个 gulp-browserify 摆在我面前，后来它被加入了黑名单。</p>
+</blockquote>
+<p>社区为 gulp 开发了各种各样的插件，但 gulp 生态系统是有逼格的，不是来者不拒。对于一些不符合 gulp 理念的插件，被毫不留情地加入了黑名单，gulp-browserify 便是其中之一。<br><strong>直接使用Browserify</strong><br>要点：Stream 转换<br>vinyl-source-stream + vinyl-buffer<br>vinyl-source-stream: 将常规流转换为包含 Stream 的 vinyl 对象；<br>vinyl-buffer: 将 vinyl 对象内容中的 Stream 转换为 Buffer。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var browserify = require(&#39;browserify&#39;);  &#10;var gulp = require(&#39;gulp&#39;);  &#10;var uglify = require(&#39;gulp-uglify&#39;);  &#10;var source = require(&#39;vinyl-source-stream&#39;);  &#10;var buffer = require(&#39;vinyl-buffer&#39;);&#10;&#10;gulp.task(&#39;browserify&#39;, function() &#123;  &#10;  return browserify(&#39;./src/js/app.js&#39;)&#10;    .bundle()&#10;    .pipe(source(&#39;bundle.js&#39;)) // gives streaming vinyl file object&#10;    .pipe(buffer()) // &#60;----- convert from streaming to buffered vinyl file object&#10;    .pipe(uglify()) // now gulp-uglify works &#10;    .pipe(gulp.dest(&#39;./dist/js&#39;));&#10;&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>把常规流转转成 vinyl 对象流是在 gulp 中直接使用 browserify 的关键点，**理解了这点，所有问题都迎刃而解了，其他操作也是在此基础上进行的。</p>
+<h3 id="Gulp__u9AD8_u7EA7_u6280_u5DE7"><a href="#Gulp__u9AD8_u7EA7_u6280_u5DE7" class="headerlink" title="Gulp 高级技巧"></a>Gulp 高级技巧</h3><p><strong>gulp 预期输入的是 Vinyl 文件对象，直接输入读取流当然不行。</strong><br>使用 gulp 过程中，偶尔会遇到 Streaming not supported 这样的错误。这通常是因为常规流与 vinyl 文件对象流有差异、gulp 插件使用了只支持 buffer （不支持 stream）的库。比如，不能把 Node 常规流直接传递给 gulp 及其插件。</p>
+<blockquote>
+<p>译者注：Gulp 管道中的「流」不是操作 Strings 和 Buffers 的常规 Node.js 流，而是启用 object mode 的流。Gulp 中的流发送的是 vinyl 文件对象。</p>
+</blockquote>
+<p><strong>Vinyl 文件对象</strong></p>
+<p>Gulp 使用 vinyl-fs ，并从 vinyl-fs 继承了 gulp.src() 和 gulp.dest() 方法。而 vinyl-fs 使用了 vinyl 文件对象，即 「虚拟文件格式」。要在 gulp 及其插件中使用常规读取流，需要把读取流转换为 vinyl 文件对象先。<br>vinyl-source-stream 便是一个转换工具：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var source = require(&#39;vinyl-source-stream&#39;);  &#10;var marked = require(&#39;gulp-marked&#39;);&#10;&#10;fs.createReadStream(&#39;*.md&#39;)  &#10;  .pipe(source())&#10;  .pipe(marked())&#10;  .pipe(gulp.dest(&#39;dist/&#39;));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Vinyl 文件对象的内容可以是以下三种形式：Stream Buffer null</p>
+</blockquote>
+<p>gulp.src() 传输的流是把内容转换成 buffer 的 vinyl 文件对象，因此 gulp 中得到的不是数据块（chunk），而是包含 buffer 的虚拟文件。Vinyl 文件格式有一个 contents 属性来存放文件内容（buffer 或者 stream 或者 null）。</p>
+<p><strong>Gulp 默认使用 buffer</strong><br>buffer优点：基于完整的源内容做转换<br>缺点：对于大文件处理效率低下，因为文件发射回对象流之前必须完整读取<br>因此 gulp 选择默认使用内容转换成 buffer 的 vinyl 对象流，以方便处理。</p>
+<blockquote>
+<p>参考： <em><a href="https://csspod.com/advanced-tips-for-using-gulp-js/" target="_blank" rel="external">https://csspod.com/advanced-tips-for-using-gulp-js/</a></em></p>
+</blockquote>
+<h3 id="u5176_u4ED6_u63D2_u4EF6"><a href="#u5176_u4ED6_u63D2_u4EF6" class="headerlink" title="其他插件"></a>其他插件</h3><p>gulp-load-plugins <em>自动加载gulp开头的插件</em><br>gulp-useref gulp-if gulp-htmlmin <em>html模板&amp;压缩</em><br>gulp-babel gulp-eslint  gulp-uglify <em>js依赖&amp;检查&amp;压缩</em><br>gulp-sass gulp-autoprefixer gulp-cssnano  <em>css转换&amp;后缀&amp;美化</em><br>gulp-cache gulp-imagemin <em>图片缓存&amp;压缩</em><br>gulp-plumber <em>错误处理</em><br>gulp-sourcemaps <em>压缩地图</em><br>gulp-size <em>统计大小&amp;时间</em><br>del <em>删除文件</em><br>lodash <em>工具js</em><br>main-bower-files wiredep <em>bower依赖</em></p>
+<blockquote>
+<p>参考：yeoman加载器 generator-webapp</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/27/前端适配方案/" rel="next" title="前端适配方案">
+                <i class="fa fa-chevron-left"></i> 前端适配方案
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="刘金龙" />
+          <p class="site-author-name" itemprop="name">刘金龙</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#babel"><span class="nav-number">1.</span> <span class="nav-text">babel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BrowserSync"><span class="nav-number">2.</span> <span class="nav-text">BrowserSync</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Browsersync_API"><span class="nav-number">2.1.</span> <span class="nav-text">Browsersync API</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ruby_SASS__26amp_3B_26amp_3B_SASS"><span class="nav-number">3.</span> <span class="nav-text">Ruby SASS && SASS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Browserify"><span class="nav-number">4.</span> <span class="nav-text">Browserify</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gulp__u9AD8_u7EA7_u6280_u5DE7"><span class="nav-number">5.</span> <span class="nav-text">Gulp 高级技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5176_u4ED6_u63D2_u4EF6"><span class="nav-number">6.</span> <span class="nav-text">其他插件</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘金龙</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
