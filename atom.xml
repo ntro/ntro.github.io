@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://p8ss.com/"/>
-  <updated>2016-03-28T08:20:45.208Z</updated>
+  <updated>2016-03-28T08:45:33.494Z</updated>
   <id>http://p8ss.com/</id>
   
   <author>
@@ -18,8 +18,8 @@
     <title><![CDATA[gulp插件解析]]></title>
     <link href="http://p8ss.com/2016/03/28/gulp%E6%8F%92%E4%BB%B6%E8%A7%A3%E6%9E%90/"/>
     <id>http://p8ss.com/2016/03/28/gulp插件解析/</id>
-    <published>2016-03-28T08:20:45.210Z</published>
-    <updated>2016-03-28T08:20:45.208Z</updated>
+    <published>2016-03-28T08:45:33.496Z</published>
+    <updated>2016-03-28T08:45:33.494Z</updated>
     <content type="html"><![CDATA[<h3 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h3><p>现在我们将它分为两个单独的包： babel-cli和babel-core。<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --global babel-cli</span><br><span class="line">npm install --save-dev babel-core</span><br></pre></td></tr></table></figure></p>
 <p>如果你想要在命令行使用Babel，你可以安装babel-cli，或者你需要在一个Node项目中使用Babel，你可以使用babel-core。</p>
 <p><strong>增加插件和预设值</strong><br>你需要根据你需要完成的任务来单独安装相应的插件。<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev babel-preset-es2015</span><br></pre></td></tr></table></figure></p>
