@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Hexo]]></title>
+  <title><![CDATA[Leo's note]]></title>
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://p8ss.com/"/>
-  <updated>2016-03-28T07:47:16.199Z</updated>
+  <updated>2016-03-28T08:20:45.208Z</updated>
   <id>http://p8ss.com/</id>
   
   <author>
@@ -15,28 +15,28 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title><![CDATA[gulp插件解析]]></title>
     <link href="http://p8ss.com/2016/03/28/gulp%E6%8F%92%E4%BB%B6%E8%A7%A3%E6%9E%90/"/>
     <id>http://p8ss.com/2016/03/28/gulp插件解析/</id>
-    <published>2016-03-28T07:47:16.199Z</published>
-    <updated>2016-03-28T07:47:16.199Z</updated>
-    <content type="html"><![CDATA[<h3 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h3><p>现在我们将它分为两个单独的包： babel-cli和babel-core。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --global babel-cli&#10;&#10;$ npm install --save-dev babel-core</span><br></pre></td></tr></table></figure></p>
+    <published>2016-03-28T08:20:45.210Z</published>
+    <updated>2016-03-28T08:20:45.208Z</updated>
+    <content type="html"><![CDATA[<h3 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h3><p>现在我们将它分为两个单独的包： babel-cli和babel-core。<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --global babel-cli</span><br><span class="line">npm install --save-dev babel-core</span><br></pre></td></tr></table></figure></p>
 <p>如果你想要在命令行使用Babel，你可以安装babel-cli，或者你需要在一个Node项目中使用Babel，你可以使用babel-core。</p>
-<p><strong>增加插件和预设值</strong><br>你需要根据你需要完成的任务来单独安装相应的插件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev babel-preset-es2015</span><br></pre></td></tr></table></figure></p>
+<p><strong>增加插件和预设值</strong><br>你需要根据你需要完成的任务来单独安装相应的插件。<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev babel-preset-es2015</span><br></pre></td></tr></table></figure></p>
 <p>在.babelrc中配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;    &#34;presets&#34;: [&#34;es2015&#34;]&#10;&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>参考: <a href="http://cnodejs.org/topic/56460e0d89b4b49902e7fbd3" target="_blank" rel="external">cnodejs.org</a>  &amp;&amp;  <a href="https://github.com/thejameskyle/babel-handbook/blob/master/translations/zh-Hans/README.md" target="_blank" rel="external">github.com</a></p>
 </blockquote>
-<h3 id="BrowserSync"><a href="#BrowserSync" class="headerlink" title="BrowserSync"></a>BrowserSync</h3><p>对于修改或简单实例的使用，命令行用法可以说是相当有帮助的。全局安装Browsersync后，你可以这样运行它：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ browser-sync <span class="built_in">start</span> &lt;options&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="BrowserSync"><a href="#BrowserSync" class="headerlink" title="BrowserSync"></a>BrowserSync</h3><p>对于修改或简单实例的使用，命令行用法可以说是相当有帮助的。全局安装Browsersync后，你可以这样运行它：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ browser-sync <span class="built_in">start</span></span><br></pre></td></tr></table></figure></p>
 <p>命令行常用的API:</p>
 <blockquote>
-<p>–files    文件路径看<br>–server 运行本地服务器（使用您的CWD作为Web根）<br>–host    指定主机名使用<br>–port    指定要使用的端口</p>
+<p>–files 文件路径看<br>–server 运行本地服务器（使用您的CWD作为Web根）<br>–host  指定主机名使用<br>–port  指定要使用的端口</p>
 <h4 id="Browsersync_API"><a href="#Browsersync_API" class="headerlink" title="Browsersync API"></a>Browsersync API</h4><p>在 2.0.0 版本之前<br>我们允许直接引用Browsersync模块后即可使用：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 引用 browserSync 模块</span><br><span class="line">var browserSync = require("browser-sync");</span><br><span class="line"></span><br><span class="line">// 启动服务器</span><br><span class="line">browserSync(&#123;server: "./app"&#125;);</span><br><span class="line"></span><br><span class="line">// 调用reload方法 </span><br><span class="line">browserSync.reload("core.css");</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>在2.0.0+版本（推荐）<br>虽然上述方式依然支持，但现在我们推荐以下方式代替。调用 .create() 意味着你得到一个唯一的实例并允许您创建多个服务器或代理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// require &#21152;&#36733; browser-sync &#27169;&#22359;&#10;var bs = require(&#34;browser-sync&#34;).create();&#10;&#10;// .init &#21551;&#21160;&#26381;&#21153;&#22120;&#10;bs.init(&#123;&#10;    server: &#34;./app&#34;&#10;&#125;);&#10;&#10;// &#29616;&#22312;&#35831;BS&#65292;&#32780;&#19981;&#26159;&#26041;&#27861;&#10;// &#20027;Browsersync&#27169;&#22359;&#20986;&#21475;&#10;bs.reload(&#34;*.html&#34;);</span><br></pre></td></tr></table></figure></p>
 <p>常用的API:</p>
 <blockquote>
-<p>.create() 创建一个唯一的实例并允许您创建多个服务器或代理<br>.init( config, cb ) 启动一个服务器<br>.reload( arg )    导致浏览器刷新，要么注入文件，实时更新改动<br>.stream( opts )    返回一个变换流，并且可以充当一次或多个文件</p>
+<p>.create() 创建一个唯一的实例并允许您创建多个服务器或代理<br>.init( config, cb ) 启动一个服务器<br>.reload( arg )  导致浏览器刷新，要么注入文件，实时更新改动<br>.stream( opts ) 返回一个变换流，并且可以充当一次或多个文件</p>
 </blockquote>
 <p><strong>options (选项配置</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">browserSync(&#123;</span><br><span class="line">   notify: <span class="literal">false</span>, <span class="comment">//浏览器中的通知。</span></span><br><span class="line">   port: <span class="number">9000</span>, <span class="comment">//使用（而不是一个自动检测到Browsersync）特定端口 </span></span><br><span class="line">   server: &#123;</span><br><span class="line">     baseDir: [<span class="string">'.tmp'</span>, <span class="string">'app'</span>], <span class="comment">//多个基目录</span></span><br><span class="line">     routes: &#123; <span class="comment">//值是文件夹要提供的（相对于当前的工作目录）</span></span><br><span class="line">       <span class="string">'/bower_components'</span>: <span class="string">'bower_components'</span></span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>Browsersync + Gulp.js</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var gulp        = require(&#39;gulp&#39;);&#10;var browserSync = require(&#39;browser-sync&#39;).create();&#10;var sass        = require(&#39;gulp-sass&#39;);&#10;var reload      = browserSync.reload;&#10;&#10;// &#38745;&#24577;&#26381;&#21153;&#22120; + &#30417;&#21548; scss/html &#25991;&#20214;&#10;gulp.task(&#39;serve&#39;, [&#39;sass&#39;], function() &#123;&#10;&#10;    browserSync.init(&#123;&#10;        server: &#34;./app&#34;&#10;    &#125;);&#10;&#10;    gulp.watch(&#34;app/scss/*.scss&#34;, [&#39;sass&#39;]);&#10;    gulp.watch(&#34;app/*.html&#34;).on(&#39;change&#39;, reload);&#10;&#125;);&#10;&#10;// scss&#32534;&#35793;&#21518;&#30340;css&#23558;&#27880;&#20837;&#21040;&#27983;&#35272;&#22120;&#37324;&#23454;&#29616;&#26356;&#26032;&#10;gulp.task(&#39;sass&#39;, function() &#123;&#10;    return gulp.src(&#34;app/scss/*.scss&#34;)&#10;        .pipe(sass())&#10;        .pipe(gulp.dest(&#34;app/css&#34;))&#10;        .pipe(reload(&#123;stream: true&#125;));&#10;&#125;);&#10;&#10;gulp.task(&#39;default&#39;, [&#39;serve&#39;]);</span><br></pre></td></tr></table></figure></p>
@@ -83,6 +83,8 @@
     <summary type="html">
     <![CDATA[<h3 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h3><p>现在我们将它分为两个单独的包： babel-cli和babel-core。<br><figure class="hi]]>
     </summary>
+    
+      <category term="前端开发" scheme="http://p8ss.com/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
