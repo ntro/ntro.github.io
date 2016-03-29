@@ -3,9 +3,9 @@
   <title><![CDATA[Leo's note]]></title>
   
   <link href="/atom.xml" rel="self"/>
-  <link href="http://p8ss.com/"/>
+  <link href="http://note.p8ss.com/"/>
   <updated>2016-03-28T08:45:33.494Z</updated>
-  <id>http://p8ss.com/</id>
+  <id>http://note.p8ss.com/</id>
   
   <author>
     <name><![CDATA[刘金龙]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[gulp插件解析]]></title>
-    <link href="http://p8ss.com/2016/03/28/gulp%E6%8F%92%E4%BB%B6%E8%A7%A3%E6%9E%90/"/>
-    <id>http://p8ss.com/2016/03/28/gulp插件解析/</id>
+    <link href="http://note.p8ss.com/2016/03/28/gulp%E6%8F%92%E4%BB%B6%E8%A7%A3%E6%9E%90/"/>
+    <id>http://note.p8ss.com/2016/03/28/gulp插件解析/</id>
     <published>2016-03-28T08:45:33.496Z</published>
     <updated>2016-03-28T08:45:33.494Z</updated>
     <content type="html"><![CDATA[<h3 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h3><p>现在我们将它分为两个单独的包： babel-cli和babel-core。<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --global babel-cli</span><br><span class="line">npm install --save-dev babel-core</span><br></pre></td></tr></table></figure></p>
@@ -84,7 +84,7 @@
     <![CDATA[<h3 id="babel"><a href="#babel" class="headerlink" title="babel"></a>babel</h3><p>现在我们将它分为两个单独的包： babel-cli和babel-core。<br><figure class="hi]]>
     </summary>
     
-      <category term="前端开发" scheme="http://p8ss.com/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+      <category term="前端开发" scheme="http://note.p8ss.com/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
